@@ -1,0 +1,86 @@
+[
+  {
+    "id": "HK-4K7QD",
+    "userPhone": "+251911234567",
+    "doctorId": "dr-hanna-tesfaye",
+    "dayOffset": 2,
+    "time": "09:00",
+    "patientName": "Abebe Kebede",
+    "phone": "+251911234567",
+    "reason": "A cough that has lasted two weeks",
+    "forSomeoneElse": false,
+    "status": "booked"
+  },
+  {
+    "id": "HK-9MR2T",
+    "userPhone": "+251911234567",
+    "doctorId": "dr-meron-alemu",
+    "dayOffset": 4,
+    "time": "10:30",
+    "patientName": "Liya Abebe",
+    "phone": "+251911234567",
+    "reason": "Follow-up after her vaccinations",
+    "forSomeoneElse": true,
+    "status": "booked"
+  },
+  {
+    "id": "HK-3XW8P",
+    "userPhone": "+251911234567",
+    "doctorId": "dr-dawit-bekele",
+    "dayOffset": -6,
+    "time": "11:00",
+    "patientName": "Abebe Kebede",
+    "phone": "+251911234567",
+    "reason": "Toothache, upper right",
+    "forSomeoneElse": false,
+    "status": "booked"
+  },
+  {
+    "id": "HK-7HN5C",
+    "userPhone": "+251911234567",
+    "doctorId": "dr-liya-gebremedhin",
+    "dayOffset": -2,
+    "time": "09:30",
+    "patientName": "Almaz Tadesse",
+    "phone": "+251911234567",
+    "reason": "Blood-pressure review for my mother",
+    "forSomeoneElse": true,
+    "status": "cancelled"
+  },
+  {
+    "id": "HK-2PB6Y",
+    "userPhone": "+251922765432",
+    "doctorId": "dr-dawit-bekele",
+    "dayOffset": 1,
+    "time": "09:00",
+    "patientName": "Tsion Haile",
+    "phone": "+251922765432",
+    "reason": "Toothache, lower left",
+    "forSomeoneElse": false,
+    "status": "booked"
+  },
+  {
+    "id": "HK-6TJ4V",
+    "userPhone": "+251922765432",
+    "doctorId": "dr-hanna-tesfaye",
+    "dayOffset": 1,
+    "time": "08:30",
+    "patientName": "Tsion Haile",
+    "phone": "+251922765432",
+    "reason": "Annual check-up",
+    "forSomeoneElse": false,
+    "status": "booked"
+  },
+  {
+    "id": "HK-8CQ3L",
+    "userPhone": "+251944118820",
+    "doctorId": "dr-tigist-kebede",
+    "dayOffset": 3,
+    "time": "08:30",
+    "patientName": "Meseret Alemayehu",
+    "phone": "+251944118820",
+    "reason": "Antenatal visit, 24 weeks",
+    "forSomeoneElse": false,
+    "status": "booked"
+  }
+]

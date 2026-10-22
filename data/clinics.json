@@ -1,0 +1,74 @@
+[
+  {
+    "id": "selam-family-clinic",
+    "name": "Selam Family Clinic",
+    "area": "bole",
+    "address": "Bole Road, near Edna Mall, 2nd floor",
+    "phone": "011 661 2040",
+    "hours": "Mon–Sat, 08:00–18:00",
+    "about": "A family practice that sees adults and children, with a small lab on site for blood and urine tests."
+  },
+  {
+    "id": "abay-eye-and-skin",
+    "name": "Abay Eye & Skin Clinic",
+    "area": "bole",
+    "address": "Bole Atlas, off Cameroon Street, ground floor",
+    "phone": "011 618 3377",
+    "hours": "Mon–Fri, 09:00–17:00 · Sat, 09:00–13:00",
+    "about": "Eye examinations, glasses prescriptions and dermatology under one roof."
+  },
+  {
+    "id": "kazanchis-dental-centre",
+    "name": "Kazanchis Dental Centre",
+    "area": "kazanchis",
+    "address": "Off Ras Desta Damtew Street, behind the UNECA compound",
+    "phone": "011 552 9184",
+    "hours": "Mon–Sat, 08:30–19:00",
+    "about": "General dentistry for adults and children: check-ups, fillings, extractions and cleaning."
+  },
+  {
+    "id": "lucy-internal-medicine",
+    "name": "Lucy Internal Medicine Centre",
+    "area": "kazanchis",
+    "address": "Kazanchis, on the side street beside the Intercontinental, 3rd floor",
+    "phone": "011 557 0461",
+    "hours": "Mon–Fri, 08:00–17:00",
+    "about": "Specialists for chronic conditions — diabetes, hypertension, thyroid and heart follow-up — and antenatal care."
+  },
+  {
+    "id": "tsehay-childrens-clinic",
+    "name": "Tsehay Children's Clinic",
+    "area": "piassa",
+    "address": "Piassa, Adwa Street, two buildings up from the Taitu Hotel",
+    "phone": "011 111 7329",
+    "hours": "Mon–Sat, 08:00–16:00",
+    "about": "A children's clinic in the old town, with a general practitioner for the parents who bring them."
+  },
+  {
+    "id": "entoto-view-specialty",
+    "name": "Entoto View Specialty Clinic",
+    "area": "megenagna",
+    "address": "Megenagna roundabout, the Zefmesh side, 4th floor",
+    "phone": "011 667 2215",
+    "hours": "Mon–Sat, 08:00–18:00",
+    "about": "Internal medicine, dermatology and eye care, five minutes from the light-rail station."
+  },
+  {
+    "id": "yeneta-womens-health",
+    "name": "Yeneta Women's Health Clinic",
+    "area": "sarbet",
+    "address": "Sarbet, on the Mekanisa road, opposite the Total station",
+    "phone": "011 371 8802",
+    "hours": "Mon–Fri, 08:30–17:30 · Sat, 08:30–12:30",
+    "about": "Gynaecology and antenatal care, with a general practitioner for the rest of the family."
+  },
+  {
+    "id": "tesfa-community-clinic",
+    "name": "Tesfa Community Clinic",
+    "area": "cmc",
+    "address": "CMC Road, at the St. Michael church junction",
+    "phone": "011 646 9530",
+    "hours": "Mon–Sat, 08:00–18:00",
+    "about": "A neighbourhood clinic for the whole family: general practice, children and a dental chair."
+  }
+]

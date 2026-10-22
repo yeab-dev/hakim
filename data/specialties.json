@@ -1,0 +1,9 @@
+[
+  { "id": "general-practice", "name": "General practice", "blurb": "The first stop for most things — a fever, a check-up, a referral." },
+  { "id": "paediatrics", "name": "Paediatrics", "blurb": "Children, from newborns to teenagers." },
+  { "id": "internal-medicine", "name": "Internal medicine", "blurb": "Adults with long-term conditions: diabetes, blood pressure, the heart." },
+  { "id": "gynaecology", "name": "Gynaecology & obstetrics", "blurb": "Antenatal visits and women's health." },
+  { "id": "dentistry", "name": "Dentistry", "blurb": "Check-ups, fillings, extractions and cleaning." },
+  { "id": "dermatology", "name": "Dermatology", "blurb": "Skin, hair and nails." },
+  { "id": "ophthalmology", "name": "Eye care", "blurb": "Eye examinations, glasses and infections." }
+]

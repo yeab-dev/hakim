@@ -1,0 +1,367 @@
+[
+  {
+    "id": "dr-hanna-tesfaye",
+    "clinicId": "selam-family-clinic",
+    "name": "Dr. Hanna Tesfaye",
+    "specialty": "general-practice",
+    "fee": 450,
+    "about": "Family doctor; Amharic and English.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "start": "08:30",
+      "end": "12:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-yonas-girma",
+    "clinicId": "selam-family-clinic",
+    "name": "Dr. Yonas Girma",
+    "specialty": "paediatrics",
+    "fee": 600,
+    "about": "Paediatrician; newborn checks and vaccinations.",
+    "schedule": {
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "start": "14:00",
+      "end": "17:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-selamawit-haile",
+    "clinicId": "selam-family-clinic",
+    "name": "Dr. Selamawit Haile",
+    "specialty": "internal-medicine",
+    "fee": 700,
+    "about": "Internist; diabetes and blood-pressure follow-up.",
+    "schedule": {
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "start": "09:00",
+      "end": "12:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-samuel-tadesse",
+    "clinicId": "abay-eye-and-skin",
+    "name": "Dr. Samuel Tadesse",
+    "specialty": "ophthalmology",
+    "fee": 650,
+    "about": "Ophthalmologist; eye examinations and glasses prescriptions.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "start": "09:00",
+      "end": "12:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-bethlehem-mekonnen",
+    "clinicId": "abay-eye-and-skin",
+    "name": "Dr. Bethlehem Mekonnen",
+    "specialty": "dermatology",
+    "fee": 700,
+    "about": "Dermatologist; acne, eczema and hair loss.",
+    "schedule": {
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "start": "09:30",
+      "end": "13:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-dawit-bekele",
+    "clinicId": "kazanchis-dental-centre",
+    "name": "Dr. Dawit Bekele",
+    "specialty": "dentistry",
+    "fee": 500,
+    "about": "Dentist; fillings, extractions and children's teeth.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "start": "08:30",
+      "end": "12:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-rahel-wolde",
+    "clinicId": "kazanchis-dental-centre",
+    "name": "Dr. Rahel Wolde",
+    "specialty": "dentistry",
+    "fee": 500,
+    "about": "Dentist; cleaning and gum care.",
+    "schedule": {
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "start": "14:00",
+      "end": "18:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-tewodros-asfaw",
+    "clinicId": "lucy-internal-medicine",
+    "name": "Dr. Tewodros Asfaw",
+    "specialty": "internal-medicine",
+    "fee": 800,
+    "about": "Internist; heart and thyroid follow-up.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "start": "08:00",
+      "end": "11:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-kidist-abera",
+    "clinicId": "lucy-internal-medicine",
+    "name": "Dr. Kidist Abera",
+    "specialty": "gynaecology",
+    "fee": 750,
+    "about": "Obstetrician-gynaecologist; antenatal care.",
+    "schedule": {
+      "days": [
+        2,
+        4
+      ],
+      "start": "13:30",
+      "end": "16:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-meron-alemu",
+    "clinicId": "tsehay-childrens-clinic",
+    "name": "Dr. Meron Alemu",
+    "specialty": "paediatrics",
+    "fee": 550,
+    "about": "Paediatrician; growth checks and childhood illness.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "start": "08:00",
+      "end": "12:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-henok-desta",
+    "clinicId": "tsehay-childrens-clinic",
+    "name": "Dr. Henok Desta",
+    "specialty": "general-practice",
+    "fee": 400,
+    "about": "General practitioner.",
+    "schedule": {
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "start": "13:00",
+      "end": "15:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-liya-gebremedhin",
+    "clinicId": "entoto-view-specialty",
+    "name": "Dr. Liya Gebremedhin",
+    "specialty": "internal-medicine",
+    "fee": 750,
+    "about": "Internist; asthma and long-term conditions.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "start": "09:00",
+      "end": "12:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-mulugeta-ayele",
+    "clinicId": "entoto-view-specialty",
+    "name": "Dr. Mulugeta Ayele",
+    "specialty": "dermatology",
+    "fee": 650,
+    "about": "Dermatologist; skin infections and allergies.",
+    "schedule": {
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "start": "14:00",
+      "end": "17:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-eden-yohannes",
+    "clinicId": "entoto-view-specialty",
+    "name": "Dr. Eden Yohannes",
+    "specialty": "ophthalmology",
+    "fee": 650,
+    "about": "Ophthalmologist; children's eyes and glaucoma checks.",
+    "schedule": {
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "start": "08:30",
+      "end": "11:30",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-tigist-kebede",
+    "clinicId": "yeneta-womens-health",
+    "name": "Dr. Tigist Kebede",
+    "specialty": "gynaecology",
+    "fee": 700,
+    "about": "Obstetrician-gynaecologist; antenatal visits and family planning.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "start": "08:30",
+      "end": "12:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-nahom-getachew",
+    "clinicId": "yeneta-womens-health",
+    "name": "Dr. Nahom Getachew",
+    "specialty": "general-practice",
+    "fee": 450,
+    "about": "General practitioner.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "start": "13:30",
+      "end": "17:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-mekdes-tilahun",
+    "clinicId": "tesfa-community-clinic",
+    "name": "Dr. Mekdes Tilahun",
+    "specialty": "general-practice",
+    "fee": 350,
+    "about": "Family doctor; Amharic, Afaan Oromo and English.",
+    "schedule": {
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "start": "08:00",
+      "end": "12:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-biruk-lemma",
+    "clinicId": "tesfa-community-clinic",
+    "name": "Dr. Biruk Lemma",
+    "specialty": "paediatrics",
+    "fee": 450,
+    "about": "Paediatrician.",
+    "schedule": {
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "start": "13:00",
+      "end": "16:00",
+      "minutes": 30
+    }
+  },
+  {
+    "id": "dr-saron-fikre",
+    "clinicId": "tesfa-community-clinic",
+    "name": "Dr. Saron Fikre",
+    "specialty": "dentistry",
+    "fee": 400,
+    "about": "Dentist; check-ups and fillings.",
+    "schedule": {
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "start": "09:00",
+      "end": "13:00",
+      "minutes": 30
+    }
+  }
+]

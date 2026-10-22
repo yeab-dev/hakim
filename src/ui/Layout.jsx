@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "../auth/useAuth";
 import "./Layout.css";
 
 const TABS = [
@@ -10,6 +11,8 @@ const TABS = [
 // The frame every screen renders into. Built once; navigating swaps only
 // what is in the <Outlet />.
 function Layout() {
+  const { user, signOut } = useAuth();
+
   return (
     <div className="shell">
       <header className="topbar">
@@ -27,6 +30,15 @@ function Layout() {
               {tab.label}
             </NavLink>
           ))}
+          {user ? (
+            <button type="button" className="nav__link nav__button" onClick={signOut}>
+              Sign out {user.phone}
+            </button>
+          ) : (
+            <NavLink to="/login" className="nav__link">
+              Sign in
+            </NavLink>
+          )}
         </nav>
       </header>
 

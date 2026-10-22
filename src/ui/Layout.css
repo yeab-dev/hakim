@@ -73,3 +73,32 @@
     padding-right: 16px;
   }
 }
+
+.nav__button {
+  font: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+.login {
+  display: grid;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.login input,
+.login button {
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.login button {
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  cursor: pointer;
+}

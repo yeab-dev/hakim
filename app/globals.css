@@ -385,6 +385,7 @@ textarea {
 }
 
 .card {
+  min-width: 0;
   padding: 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -444,6 +445,10 @@ textarea {
 }
 
 .doctor {
+  /* A grid item's minimum width is its content's; without this the row of
+     day buttons would widen the card past a phone screen instead of
+     scrolling inside it. */
+  min-width: 0;
   padding: 16px;
   border: 1px solid var(--border);
   border-radius: 10px;

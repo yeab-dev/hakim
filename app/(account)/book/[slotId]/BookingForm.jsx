@@ -33,8 +33,14 @@ function BookingForm({ slotId, defaultPhone }) {
     };
   }
 
+  // Leaving a field checks it — but only once something is typed in it.
+  // Tabbing past an empty field is not a mistake yet, and an error appearing
+  // under it would push the Book button away from the pointer mid-click.
+  // Empty fields are caught on submit instead.
   function touch(field) {
-    return () => setTouched((t) => ({ ...t, [field]: true }));
+    return (event) => {
+      if (event.target.value.trim()) setTouched((t) => ({ ...t, [field]: true }));
+    };
   }
 
   function handleSubmit(event) {

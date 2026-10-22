@@ -161,3 +161,15 @@ routes.
 npm install
 npm run dev
 ```
+
+## Status
+
+**Day 35 — scaffold.** Every route on the map is reachable. Each screen is a
+placeholder that names the data it will need. Signing in is a stand-in
+(any phone number, kept in `localStorage`), but the guard is real:
+`/book/:slotId`, `/appointments` and `/appointments/:appointmentId` send a
+signed-out visitor to `/login` and return them afterwards.
+
+Checked in headless Chromium: all six open routes render their screen, an
+unknown path renders Not found, the three guarded routes redirect when signed
+out, and sign-in returns to the page that was asked for.

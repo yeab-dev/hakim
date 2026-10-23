@@ -690,3 +690,71 @@ textarea {
 .checkin {
   display: contents;
 }
+
+/* ---- live status (appointment page) --------------------------------- */
+
+.live {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.live__hint {
+  font-size: 13px;
+}
+
+/* ---- search (clinics page) ------------------------------------------ */
+
+.search {
+  margin-bottom: 20px;
+}
+
+.search__label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 4px;
+}
+
+.search__status {
+  font-size: 14px;
+  margin: 6px 0;
+  min-height: 1.5em;
+}
+
+.search__results {
+  display: grid;
+  gap: 6px;
+}
+
+.search__results a {
+  display: block;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.search__results a:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.search__meta {
+  display: block;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.search--stale .search__results {
+  opacity: 0.6;
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin: -8px 0 24px;
+}

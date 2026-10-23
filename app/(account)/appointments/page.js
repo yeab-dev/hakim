@@ -8,9 +8,23 @@ export const metadata = { title: "My appointments" };
 // Dynamic (ƒ): one person's bookings, read with their cookie. The Vite
 // version fetched these in an effect; this async server component reads them
 // directly — no useFetch, no loading flag, no endpoint in between.
-export default async function AppointmentsPage() {
-  const session = await requireSession("/appointments");
+//
+// "Past and cancelled" grows with every visit, so it is paged — and the page
+// number lives in the query string (?page=2), so a page can be linked to,
+// survives a refresh and works without JavaScript. Upcoming bookings are
+// never paged: there are only ever a few, and they matter most.
+const PAGE_SIZE = 5;
+
+export default async function AppointmentsPage({ searchParams }) {
+  const { page: pageParam } = await searchParams;
+  const session = await requireSession(pageParam ? `/appointments?page=${pageParam}` : "/appointments");
   const { upcoming, earlier } = await appointmentsFor(session.userId);
+
+  const pages = Math.max(1, Math.ceil(earlier.length / PAGE_SIZE));
+  // ?page= is user input: anything that is not a page we have shows page 1.
+  const asked = Number.parseInt(pageParam, 10);
+  const page = Number.isInteger(asked) && asked >= 1 && asked <= pages ? asked : 1;
+  const shown = earlier.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <>
@@ -31,8 +45,9 @@ export default async function AppointmentsPage() {
 
       {earlier.length > 0 && (
         <>
-          <h2>Past and cancelled</h2>
-          <AppointmentList appointments={earlier} />
+          <h2 id="earlier">Past and cancelled</h2>
+          <AppointmentList appointments={shown} />
+          {pages > 1 && <Pager page={page} pages={pages} total={earlier.length} />}
         </>
       )}
     </>
@@ -63,6 +78,25 @@ function AppointmentList({ appointments }) {
     </ul>
   );
 }
+
+function Pager({ page, pages, total }) {
+  const href = (n) => (n === 1 ? "/appointments#earlier" : `/appointments?page=${n}#earlier`);
+  return (
+    <nav className="pager" aria-label="Past and cancelled bookings, by page">
+      {page > 1 ? <Link href={href(page - 1)}>&larr; Newer</Link> : <span aria-hidden="true" />}
+      <span>
+        Page {page} of {pages} · {total} bookings
+      </span>
+      {page < pages && <Link href={href(page + 1)}>Older &rarr;</Link>}
+    </nav>
+  );
+}
+
+Pager.propTypes = {
+  page: PropTypes.number.isRequired,
+  pages: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+};
 
 AppointmentList.propTypes = {
   appointments: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -60,7 +60,7 @@ export default async function ClinicPage({ params }) {
       <h2>Doctors and open times this week</h2>
       <ul className="doctors">
         {clinic.doctors.map((doctor) => (
-          <li key={doctor.id} className="doctor">
+          <li key={doctor.id} id={doctor.id} className="doctor">
             <h3 className="doctor__name">{doctor.name}</h3>
             <p className="doctor__meta">
               {doctor.specialtyName} · consultation {doctor.fee} ETB

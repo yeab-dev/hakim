@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { getAreas, getSpecialties, isArea, isSpecialty } from "@/lib/data";
 import ClinicList from "./ClinicList";
 import ClinicListSkeleton from "./ClinicListSkeleton";
+import ClinicSearch from "./ClinicSearch";
 import FilterBar from "./FilterBar";
 
 export const metadata = { title: "Clinics" };
@@ -20,6 +21,7 @@ export default async function ClinicsPage({ searchParams }) {
   return (
     <>
       <h1>Clinics</h1>
+      <ClinicSearch />
       <FilterBar specialties={getSpecialties()} areas={getAreas()} specialty={specialty} area={area} />
       {ignored && <p className="note">An unknown filter in the address was ignored.</p>}
 

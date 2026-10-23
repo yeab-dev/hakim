@@ -158,8 +158,20 @@ ul {
   cursor: pointer;
 }
 
+/* Reserved for the sign-in state, which arrives after the page: as wide as
+   "Sign out 0911 234 567", so nothing moves when it does. */
+.nav__auth {
+  display: inline-flex;
+  justify-content: flex-start;
+  min-width: 12.5em;
+}
+
+.nav__auth form {
+  display: contents;
+}
+
 .nav__pending {
-  min-width: 80px;
+  display: inline-block;
 }
 
 .page {

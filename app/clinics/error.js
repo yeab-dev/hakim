@@ -14,6 +14,15 @@ export default function ClinicsError({ error, reset }) {
   const pathname = usePathname();
   const params = useSearchParams();
 
+  // About React error #419 in the console after ?fail=1 (Day 49): it is not
+  // caused by this retry. The list failed inside a Suspense boundary during
+  // the server render, so the HTML holds that boundary as "client-render
+  // this". React queues a recoverable-error report for it while hydrating and
+  // prints it on the next commit, whatever that commit is: pressing Try
+  // again, or following "Back to the home page", both print it (checked).
+  // It is React accurately reporting the deliberate server failure. The
+  // fixes tried (reset after the navigation commits, reordering) do not
+  // touch it, because the report is already queued before any click.
   function retry() {
     // reset() alone would re-render the same failed server output. Drop
     // ?fail=1 (keeping the filters), ask the server again, and clear the

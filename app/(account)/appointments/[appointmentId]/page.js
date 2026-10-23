@@ -4,6 +4,7 @@ import SlotSummary from "@/components/SlotSummary";
 import { appointmentFor } from "@/lib/appointments";
 import { requireSession } from "@/lib/session";
 import CancelForm from "./CancelForm";
+import LiveStatus from "./LiveStatus";
 
 export const metadata = { title: "Appointment" };
 
@@ -18,7 +19,8 @@ export default async function AppointmentPage({ params, searchParams }) {
 
   const rows = [
     ["Reference", <span key="ref" className="reference">{appointment.id}</span>],
-    ["Status", <span key="status" className={`status status--${appointment.status}`}>{appointment.statusLabel}</span>],
+    // The one live row: a client component seeded with this same record.
+    ["Status", <LiveStatus key="status" initial={appointment} />],
     ["Doctor", appointment.doctorName],
     ["Clinic", `${appointment.clinicName}, ${appointment.areaName}`],
     ["When", appointment.longWhen],
@@ -41,7 +43,7 @@ export default async function AppointmentPage({ params, searchParams }) {
       <h1>Appointment {appointment.id}</h1>
       <SlotSummary rows={rows} />
 
-      {appointment.cancellable && <CancelForm appointmentId={appointment.id} />}
+      {appointment.cancellable && <CancelForm initial={appointment} />}
       {appointment.status === "cancelled" && (
         <p>
           This booking is cancelled and the time is free for someone else.{" "}

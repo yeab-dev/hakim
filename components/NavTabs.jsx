@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/auth/useAuth";
 
 const TABS = [
   { href: "/", label: "Home", end: true },
@@ -9,11 +10,17 @@ const TABS = [
   { href: "/appointments", label: "My appointments" },
 ];
 
+// Shown to reception accounts only. Showing a link is not permission: the
+// /reception page and its action check the role on the server themselves.
+const RECEPTION_TAB = { href: "/reception", label: "Reception" };
+
 // Next.js has no NavLink. "Which tab is open" comes from usePathname, a hook,
 // so this one piece is a client component and the layout around it stays on
 // the server. `end` keeps "/" from matching every address.
 function NavTabs() {
   const pathname = usePathname();
+  const { user } = useAuth();
+  const tabs = user?.role === "reception" ? [...TABS, RECEPTION_TAB] : TABS;
 
   function isActive(tab) {
     return tab.end
@@ -23,7 +30,7 @@ function NavTabs() {
 
   return (
     <>
-      {TABS.map((tab) => (
+      {tabs.map((tab) => (
         <Link
           key={tab.href}
           href={tab.href}

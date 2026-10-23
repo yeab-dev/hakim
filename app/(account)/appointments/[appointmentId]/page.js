@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SlotSummary from "@/components/SlotSummary";
 import { appointmentFor } from "@/lib/appointments";
-import { requireUser } from "@/lib/session";
+import { requireSession } from "@/lib/session";
 import CancelForm from "./CancelForm";
 
 export const metadata = { title: "Appointment" };
@@ -12,16 +12,13 @@ export const metadata = { title: "Appointment" };
 export default async function AppointmentPage({ params, searchParams }) {
   const { appointmentId } = await params;
   const { booked } = await searchParams;
-  const user = await requireUser(`/appointments/${appointmentId}`);
-  const appointment = await appointmentFor(user.phone, appointmentId);
+  const session = await requireSession(`/appointments/${appointmentId}`);
+  const appointment = await appointmentFor(session.userId, appointmentId);
   if (!appointment) notFound();
-
-  const status =
-    appointment.status === "cancelled" ? "Cancelled" : appointment.upcoming ? "Booked" : "Past";
 
   const rows = [
     ["Reference", <span key="ref" className="reference">{appointment.id}</span>],
-    ["Status", <span key="status" className={`status status--${appointment.status}`}>{status}</span>],
+    ["Status", <span key="status" className={`status status--${appointment.status}`}>{appointment.statusLabel}</span>],
     ["Doctor", appointment.doctorName],
     ["Clinic", `${appointment.clinicName}, ${appointment.areaName}`],
     ["When", appointment.longWhen],

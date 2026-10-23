@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import SlotSummary from "@/components/SlotSummary";
 import { longDayLabel } from "@/lib/clock";
 import { getSlot } from "@/lib/data";
-import { requireUser } from "@/lib/session";
+import { requireSession } from "@/lib/session";
 import BookingForm from "./BookingForm";
 
 export const metadata = { title: "Book an appointment" };
@@ -13,7 +13,7 @@ export const metadata = { title: "Book an appointment" };
 // at build time.
 export default async function BookPage({ params }) {
   const { slotId } = await params;
-  const user = await requireUser(`/book/${slotId}`);
+  const session = await requireSession(`/book/${slotId}`);
   const slot = await getSlot(slotId);
   if (!slot) notFound();
 
@@ -42,7 +42,7 @@ export default async function BookPage({ params }) {
           </p>
         </div>
       ) : (
-        <BookingForm slotId={slot.id} defaultPhone={user.display} />
+        <BookingForm slotId={slot.id} defaultPhone={session.display} />
       )}
     </>
   );

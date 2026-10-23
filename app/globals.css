@@ -674,3 +674,19 @@ textarea {
     margin-bottom: 6px;
   }
 }
+
+.status--arrived {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.appointment__side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkin {
+  display: contents;
+}

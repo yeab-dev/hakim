@@ -1,0 +1,35 @@
+[
+  {
+    "id": "usr_abebe",
+    "name": "Abebe Kebede",
+    "phone": "+251911234567",
+    "role": "patient",
+    "passwordHash": "scrypt$16384$8$1$p_8q01loUEwuuLYNZderzQ$PVLkFLx-zWFCGQRA1hB8zjwvfDH_YsvRnAWRSUXqkog",
+    "createdAt": "2026-09-01T09:00:00+03:00"
+  },
+  {
+    "id": "usr_tsion",
+    "name": "Tsion Haile",
+    "phone": "+251922765432",
+    "role": "patient",
+    "passwordHash": "scrypt$16384$8$1$rEHv7iovQ8QwCriLxzlqQA$G0gRPr9D0cAgtKLAPvomxafW7fi55OmBmDHrab20AQs",
+    "createdAt": "2026-09-01T09:00:00+03:00"
+  },
+  {
+    "id": "usr_meseret",
+    "name": "Meseret Alemayehu",
+    "phone": "+251944118820",
+    "role": "patient",
+    "passwordHash": "scrypt$16384$8$1$tjX8SD7gmQugjimDAOsYHA$6gLAEI0ZvG86asYuRqAd4czMZNSy6knmF0HrlfKNZG4",
+    "createdAt": "2026-09-01T09:00:00+03:00"
+  },
+  {
+    "id": "usr_hirut",
+    "name": "Hirut Bekele",
+    "phone": "+251930111222",
+    "role": "reception",
+    "clinicId": "selam-family-clinic",
+    "passwordHash": "scrypt$16384$8$1$yMyyTypa2tXRNS7RzogV9w$z8Fh988CajPd1gYZxUt1r7Du0vnL92YB8fkVXJbX0F4",
+    "createdAt": "2026-09-01T09:00:00+03:00"
+  }
+]

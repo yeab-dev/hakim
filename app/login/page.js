@@ -1,22 +1,27 @@
 import Link from "next/link";
 import { safeReturnPath } from "@/lib/schema";
-import { getUser } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import LoginForm from "./LoginForm";
 
 export const metadata = { title: "Sign in" };
 
-// Dynamic (ƒ): it reads ?from= (where to return) and the session cookie (to
+// Dynamic (ƒ): it reads ?next= (where to return) and the session cookie (to
 // say "already signed in" instead of showing the form).
 export default async function LoginPage({ searchParams }) {
-  const { from } = await searchParams;
-  const returnTo = safeReturnPath(from);
-  const user = await getUser();
+  const { next } = await searchParams;
+  const session = await getSession();
+  // ?next= is user input. Anything that is not a path on this site is dropped
+  // here, and checked again inside the signIn action.
+  const returnTo = safeReturnPath(next, session?.role === "reception" ? "/reception" : "/appointments");
+  const signUpHref = next ? `/signup?next=${encodeURIComponent(returnTo)}` : "/signup";
 
-  if (user) {
+  if (session) {
     return (
       <>
         <h1>Already signed in</h1>
-        <p>You are signed in as {user.display}.</p>
+        <p>
+          You are signed in as {session.name} ({session.display}).
+        </p>
         <p>
           <Link href={returnTo}>Continue</Link>
         </p>
@@ -27,12 +32,12 @@ export default async function LoginPage({ searchParams }) {
   return (
     <>
       <h1>Sign in</h1>
+      <p>Booking and your appointments need an account: your mobile number and a password.</p>
+      {next && <p className="note">Sign in to continue to the page you asked for.</p>}
+      <LoginForm next={returnTo} />
       <p>
-        Booking and your appointments need a mobile number. There is no password or SMS code yet —
-        any 09… number signs you in as that number.
+        New to Hakim? <Link href={signUpHref}>Create an account</Link>
       </p>
-      {from && <p className="note">Sign in to continue to the page you asked for.</p>}
-      <LoginForm from={returnTo} />
     </>
   );
 }

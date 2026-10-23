@@ -3,15 +3,15 @@ import { appointmentsFor } from "@/lib/appointments";
 import { bookSlot } from "@/lib/booking";
 import { NOT_SIGNED_IN, problem } from "@/lib/http";
 import { parseBooking } from "@/lib/schema";
-import { getUser } from "@/lib/session";
+import { getSession } from "@/lib/session";
 
 // GET /api/appointments
 //   200 { upcoming: [...], earlier: [...] }   the signed-in user's own
 //   401 not signed in
 export async function GET() {
-  const user = await getUser();
-  if (!user) return NOT_SIGNED_IN();
-  return Response.json(await appointmentsFor(user.phone), { headers: { "Cache-Control": "private, no-store" } });
+  const session = await getSession();
+  if (!session) return NOT_SIGNED_IN();
+  return Response.json(await appointmentsFor(session.userId), { headers: { "Cache-Control": "private, no-store" } });
 }
 
 // POST /api/appointments
@@ -26,8 +26,8 @@ export async function GET() {
 // The same rules and the same bookSlot() as the bookAppointment server action
 // — the form's own checks are a courtesy; these are the rule.
 export async function POST(request) {
-  const user = await getUser();
-  if (!user) return NOT_SIGNED_IN();
+  const session = await getSession();
+  if (!session) return NOT_SIGNED_IN();
 
   let body;
   try {
@@ -39,7 +39,7 @@ export async function POST(request) {
   const parsed = parseBooking(body);
   if (!parsed.success) return problem(422, "Validation failed", parsed.fieldErrors);
 
-  const result = await bookSlot(user, parsed.data);
+  const result = await bookSlot(session, parsed.data);
   if (result.status === "not-found") return problem(404, "No such slot in the coming week");
   if (result.status === "taken") return problem(409, "That slot is already booked");
 

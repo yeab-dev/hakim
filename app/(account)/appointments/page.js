@@ -1,7 +1,7 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { appointmentsFor } from "@/lib/appointments";
-import { requireUser } from "@/lib/session";
+import { requireSession } from "@/lib/session";
 
 export const metadata = { title: "My appointments" };
 
@@ -9,13 +9,13 @@ export const metadata = { title: "My appointments" };
 // version fetched these in an effect; this async server component reads them
 // directly — no useFetch, no loading flag, no endpoint in between.
 export default async function AppointmentsPage() {
-  const user = await requireUser("/appointments");
-  const { upcoming, earlier } = await appointmentsFor(user.phone);
+  const session = await requireSession("/appointments");
+  const { upcoming, earlier } = await appointmentsFor(session.userId);
 
   return (
     <>
       <h1>My appointments</h1>
-      <p>Signed in as {user.display}.</p>
+      <p>Signed in as {session.name} ({session.display}).</p>
 
       <h2>Upcoming</h2>
       {upcoming.length === 0 ? (
@@ -54,7 +54,7 @@ function AppointmentList({ appointments }) {
           </div>
           <div>
             <span className={`status status--${a.status}`}>
-              {a.status === "cancelled" ? "Cancelled" : a.upcoming ? "Booked" : "Past"}
+              {a.statusLabel}
             </span>{" "}
             <span className="reference">{a.id}</span>
           </div>

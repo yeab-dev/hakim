@@ -16,6 +16,7 @@ export default async function ClinicsPage({ searchParams }) {
   const specialty = isSpecialty(query.specialty) ? query.specialty : undefined;
   const area = isArea(query.area) ? query.area : undefined;
   const fail = query.fail === "1";
+  const slow = query.slow === "1"; // demo switch: shows the skeleton for 700 ms
   const ignored = (query.specialty && !specialty) || (query.area && !area);
 
   return (
@@ -27,8 +28,8 @@ export default async function ClinicsPage({ searchParams }) {
 
       {/* The filter bar is sent at once; only the list waits. The key makes a
           new search show the skeleton again instead of the old results. */}
-      <Suspense key={`${specialty}|${area}|${fail}`} fallback={<ClinicListSkeleton />}>
-        <ClinicList specialty={specialty} area={area} fail={fail} />
+      <Suspense key={`${specialty}|${area}|${fail}|${slow}`} fallback={<ClinicListSkeleton />}>
+        <ClinicList specialty={specialty} area={area} fail={fail} slow={slow} />
       </Suspense>
     </>
   );

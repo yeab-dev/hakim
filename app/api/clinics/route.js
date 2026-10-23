@@ -19,6 +19,6 @@ export async function GET(request) {
   if (area && !isArea(area)) fieldErrors.area = `No area called "${area}"`;
   if (Object.keys(fieldErrors).length > 0) return problem(400, "Unknown filter", fieldErrors);
 
-  const clinics = await listClinics({ specialty, area, slow: false });
+  const clinics = await listClinics({ specialty, area });
   return Response.json({ clinics });
 }

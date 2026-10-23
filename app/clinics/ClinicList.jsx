@@ -7,8 +7,8 @@ import ClinicCard from "./ClinicCard";
 // version's useFetch, isLoading and error state used to be — the wait is the
 // Suspense fallback around it, a throw is error.js, and empty is the branch
 // below.
-async function ClinicList({ specialty, area, fail }) {
-  const clinics = await listClinics({ specialty, area, fail });
+async function ClinicList({ specialty, area, fail, slow }) {
+  const clinics = await listClinics({ specialty, area, fail, slow });
 
   if (clinics.length === 0) {
     return (
@@ -43,6 +43,7 @@ ClinicList.propTypes = {
   specialty: PropTypes.string,
   area: PropTypes.string,
   fail: PropTypes.bool,
+  slow: PropTypes.bool,
 };
 
 export default ClinicList;

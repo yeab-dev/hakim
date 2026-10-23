@@ -1,9 +1,20 @@
 import Link from "next/link";
 import { safeReturnPath } from "@/lib/schema";
 import { getSession } from "@/lib/session";
+import { openGraph } from "@/lib/site";
 import LoginForm from "./LoginForm";
 
-export const metadata = { title: "Sign in" };
+const DESCRIPTION =
+  "Sign in to Hakim with your mobile number and password to book a clinic appointment and see your bookings.";
+
+export const metadata = {
+  title: "Sign in",
+  description: DESCRIPTION,
+  openGraph: openGraph({ title: "Sign in · Hakim", description: DESCRIPTION, path: "/login" }),
+  // ?next= varies; the page does not.
+  alternates: { canonical: "/login" },
+  robots: { index: false, follow: true },
+};
 
 // Dynamic (ƒ): it reads ?next= (where to return) and the session cookie (to
 // say "already signed in" instead of showing the form).

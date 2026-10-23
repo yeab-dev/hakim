@@ -6,7 +6,10 @@ import { getSlot } from "@/lib/data";
 import { requireSession } from "@/lib/session";
 import BookingForm from "./BookingForm";
 
-export const metadata = { title: "Book an appointment" };
+export const metadata = {
+  title: "Book an appointment",
+  description: "Confirm the doctor, clinic and time, then give the patient's name and number to book this appointment.",
+};
 
 // Dynamic (ƒ) — the (account) layout says so, and the page needs it: it reads
 // the session cookie, and the slot's "still free?" must be checked now, not

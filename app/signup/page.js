@@ -1,9 +1,19 @@
 import Link from "next/link";
 import { safeReturnPath } from "@/lib/schema";
 import { getSession } from "@/lib/session";
+import { openGraph } from "@/lib/site";
 import SignUpForm from "./SignUpForm";
 
-export const metadata = { title: "Create an account" };
+const DESCRIPTION =
+  "Create a Hakim account with your mobile number to book clinic appointments in Addis Ababa for yourself or your family.";
+
+export const metadata = {
+  title: "Create an account",
+  description: DESCRIPTION,
+  openGraph: openGraph({ title: "Create an account · Hakim", description: DESCRIPTION, path: "/signup" }),
+  alternates: { canonical: "/signup" },
+  robots: { index: false, follow: true },
+};
 
 // Dynamic (ƒ), for the same reasons as /login: ?next= and the session cookie.
 export default async function SignUpPage({ searchParams }) {

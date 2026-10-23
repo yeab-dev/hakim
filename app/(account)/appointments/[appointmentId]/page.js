@@ -6,7 +6,10 @@ import { requireSession } from "@/lib/session";
 import CancelForm from "./CancelForm";
 import LiveStatus from "./LiveStatus";
 
-export const metadata = { title: "Appointment" };
+export const metadata = {
+  title: "Appointment",
+  description: "One booking on Hakim: its reference, doctor, clinic and time, and whether reception has checked you in.",
+};
 
 // Dynamic (ƒ): one booking, shown only to its owner. Somebody else's
 // reference gets the same not-found screen as a reference that does not exist.

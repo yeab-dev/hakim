@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import { appointmentsFor } from "@/lib/appointments";
 import { requireSession } from "@/lib/session";
 
-export const metadata = { title: "My appointments" };
+export const metadata = {
+  title: "My appointments",
+  description: "Your upcoming, past and cancelled clinic bookings on Hakim, with the reference to show at reception.",
+  alternates: { canonical: "/appointments" },
+};
 
 // Dynamic (ƒ): one person's bookings, read with their cookie. The Vite
 // version fetched these in an effect; this async server component reads them

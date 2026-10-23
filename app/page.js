@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { getAreas, getSpecialties } from "@/lib/data";
 
+// Title and description come from the root layout (this is the default);
+// only the canonical URL is the home page's own.
+export const metadata = { alternates: { canonical: "/" } };
+
 // Static (○). The specialties and areas are part of the build; nothing here
 // depends on who is asking or on today's slots, so the page is built once and
 // served as a file. A new specialty means a new deploy, which is honest.

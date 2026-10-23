@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Page not found",
+  description: "There is no page, clinic, slot or booking at this address on Hakim.",
+};
+
 // Every kind of missing: an address no folder claims, and a page that calls
 // notFound() for an id that does not exist. Built once as a static page, so it
 // does not print the address — reading the path here would make the server

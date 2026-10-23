@@ -9,6 +9,9 @@ import Link from "next/link";
 // rather than left to be inferred page by page.
 export const dynamic = "force-dynamic";
 
+// One person's pages: never in a search index (robots.js also disallows them).
+export const metadata = { robots: { index: false, follow: false } };
+
 export default function AccountLayout({ children }) {
   return (
     <>

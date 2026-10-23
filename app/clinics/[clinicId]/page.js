@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getClinic, getClinicIds } from "@/lib/data";
+import { etb, etbRange } from "@/lib/format";
 import { clinicJsonLd, serialiseJsonLd } from "@/lib/jsonld";
 import { openGraph } from "@/lib/site";
 import DoctorSlots from "./DoctorSlots";
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }) {
   const specialties = clinic.specialties.map((s) => s.name.toLowerCase()).join(", ");
   const description =
     `${clinic.name}, ${clinic.areaName}, Addis Ababa: ${specialties}. ` +
-    `${clinic.doctors.length} doctors, consultations ${low === high ? low : `${low}–${high}`} ETB. ` +
+    `${clinic.doctors.length} doctors, consultations ${etbRange(low, high)}. ` +
     "See this week's open times and book online.";
   const path = `/clinics/${clinic.id}`;
   return {
@@ -86,7 +87,7 @@ export default async function ClinicPage({ params }) {
           <li key={doctor.id} id={doctor.id} className="doctor">
             <h3 className="doctor__name">{doctor.name}</h3>
             <p className="doctor__meta">
-              {doctor.specialtyName} · consultation {doctor.fee} ETB
+              {doctor.specialtyName} · consultation {etb(doctor.fee)}
             </p>
             <p className="doctor__about">{doctor.about}</p>
             {/* Only the day picker is a client component. It gets plain data

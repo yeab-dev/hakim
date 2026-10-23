@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { clinicToday } from "@/lib/appointments";
-import { longDayLabel, addisToday } from "@/lib/clock";
+import { addisToday } from "@/lib/clock";
+import { longDay } from "@/lib/format";
 import { getClinicSummary } from "@/lib/data";
 import { requireRole } from "@/lib/session";
 import CheckInForm from "./CheckInForm";
@@ -28,7 +29,7 @@ export default async function ReceptionPage() {
     <>
       <h1>Reception · {clinic.name}</h1>
       <p>
-        {longDayLabel(addisToday())}. Signed in as {session.name}. {waiting} of {bookings.length}{" "}
+        {longDay(addisToday())}. Signed in as {session.name}. {waiting} of {bookings.length}{" "}
         {bookings.length === 1 ? "booking" : "bookings"} still to arrive.
       </p>
 
@@ -42,7 +43,7 @@ export default async function ReceptionPage() {
             <li key={a.id} className="appointment">
               <div>
                 <p className="appointment__when">
-                  {a.time} · {a.doctorName}
+                  {a.timeLabel} · {a.doctorName}
                 </p>
                 <p className="appointment__who">
                   {a.patientName} · {a.phoneLabel} · {a.reason}

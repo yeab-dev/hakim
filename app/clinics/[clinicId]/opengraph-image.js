@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getClinicCard, getClinicIds } from "@/lib/data";
+import { etbRange } from "@/lib/format";
 import { OG_SIZE, OgFrame } from "@/lib/og";
 
 // One preview card per clinic: what a link to it looks like when shared in a
@@ -17,7 +18,7 @@ export function generateStaticParams() {
 export default async function Image({ params }) {
   const { clinicId } = await params;
   const clinic = getClinicCard(clinicId);
-  const fees = clinic.feeFrom === clinic.feeTo ? `${clinic.feeFrom} ETB` : `${clinic.feeFrom}–${clinic.feeTo} ETB`;
+  const fees = etbRange(clinic.feeFrom, clinic.feeTo);
   return new ImageResponse(
     (
       <OgFrame

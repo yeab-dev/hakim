@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SlotSummary from "@/components/SlotSummary";
-import { longDayLabel } from "@/lib/clock";
+import { etb, longDay, time } from "@/lib/format";
 import { getSlot } from "@/lib/data";
 import { requireSession } from "@/lib/session";
 import BookingForm from "./BookingForm";
@@ -23,8 +23,8 @@ export default async function BookPage({ params }) {
   const rows = [
     ["Doctor", `${slot.doctor.name} · ${slot.doctor.specialtyName}`],
     ["Clinic", `${slot.clinic.name}, ${slot.clinic.areaName}`],
-    ["When", `${longDayLabel(slot.date)} at ${slot.time}`],
-    ["Fee", `${slot.doctor.fee} ETB, paid at the clinic`],
+    ["When", `${longDay(slot.date)} at ${time(slot.startsAt)}`],
+    ["Fee", `${etb(slot.doctor.fee)}, paid at the clinic`],
   ];
 
   return (

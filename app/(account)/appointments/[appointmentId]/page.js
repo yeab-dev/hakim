@@ -26,7 +26,7 @@ export default async function AppointmentPage({ params, searchParams }) {
     ["Status", <LiveStatus key="status" initial={appointment} />],
     ["Doctor", appointment.doctorName],
     ["Clinic", `${appointment.clinicName}, ${appointment.areaName}`],
-    ["When", appointment.longWhen],
+    ["When", `${appointment.longWhen} (${appointment.fromNow})`],
     ["Patient", appointment.forSomeoneElse ? `${appointment.patientName} (booked by you)` : appointment.patientName],
     ["Contact", appointment.phoneLabel],
     ["Reason", appointment.reason],

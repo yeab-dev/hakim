@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getClinic, getClinicIds } from "@/lib/data";
+import { clinicJsonLd, serialiseJsonLd } from "@/lib/jsonld";
+import { openGraph } from "@/lib/site";
 import DoctorSlots from "./DoctorSlots";
 
 // Prerendered from params (●), refreshed at most once a minute (ISR), and
@@ -22,10 +24,29 @@ export function generateStaticParams() {
   return getClinicIds().map((clinicId) => ({ clinicId }));
 }
 
+// From the clinic record, so each of the eight pages has its own title and
+// description (the same description everywhere would read as duplicates).
+// The og:image is this folder's opengraph-image.js.
 export async function generateMetadata({ params }) {
   const { clinicId } = await params;
   const clinic = await getClinic(clinicId);
-  return { title: clinic ? clinic.name : "Clinic not found" };
+  if (!clinic) return { title: "Clinic not found" };
+
+  const fees = clinic.doctors.map((d) => d.fee);
+  const low = Math.min(...fees);
+  const high = Math.max(...fees);
+  const specialties = clinic.specialties.map((s) => s.name.toLowerCase()).join(", ");
+  const description =
+    `${clinic.name}, ${clinic.areaName}, Addis Ababa: ${specialties}. ` +
+    `${clinic.doctors.length} doctors, consultations ${low === high ? low : `${low}–${high}`} ETB. ` +
+    "See this week's open times and book online.";
+  const path = `/clinics/${clinic.id}`;
+  return {
+    title: `${clinic.name}, ${clinic.areaName}`,
+    description,
+    alternates: { canonical: path },
+    openGraph: openGraph({ title: `${clinic.name} · Hakim`, description, path, siteCard: false }),
+  };
 }
 
 export default async function ClinicPage({ params }) {
@@ -35,6 +56,8 @@ export default async function ClinicPage({ params }) {
 
   return (
     <>
+      {/* Structured data from the same `clinic` object rendered below. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiseJsonLd(clinicJsonLd(clinic)) }} />
       <p>
         <Link href="/clinics">&larr; All clinics</Link>
       </p>

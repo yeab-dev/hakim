@@ -62,20 +62,20 @@ default.
 ```
 /appointments
   proxy   -> a hakim_session cookie of the right shape exists          proxy.js:14
-  page    -> session verified (row found, not expired, account exists) app/(account)/appointments/page.js:20  requireSession()
+  page    -> session verified (row found, not expired, account exists) app/(account)/appointments/page.js:24  requireSession()
   query   -> appointmentsFor(session.userId)                           lib/store.js listAppointmentsFor(userId)
   (no writes on this page)
 
 /appointments/[appointmentId]
   proxy   -> cookie of the right shape exists                          proxy.js:14
-  page    -> session verified                                          app/(account)/appointments/[appointmentId]/page.js:16
+  page    -> session verified                                          app/(account)/appointments/[appointmentId]/page.js:19
   query   -> appointmentFor(session.userId, id): null unless owner     lib/appointments.js:52  -> notFound()
   poll    -> GET /api/appointments/:id re-checks session + owner       app/api/appointments/[appointmentId]/route.js:12
   action  -> cancelAppointment: session, then ownership                app/actions.js:99, lib/appointments.js:72
 
 /book/[slotId]
   proxy   -> cookie of the right shape exists                          proxy.js:14
-  page    -> session verified                                          app/(account)/book/[slotId]/page.js:16
+  page    -> session verified                                          app/(account)/book/[slotId]/page.js:19
   action  -> bookAppointment: session, schema, slot free;              app/actions.js:68
              filed under session.userId                                lib/booking.js
                                                                        (never a value from the form)
@@ -104,18 +104,20 @@ below call the actions directly, with no button involved.
 
 ## The three attacks — performed
 
-Run against `npm run build && npm run start -p 3350`, `.data/` deleted first.
+Run against `npm run build && npm run start -p 3350`, `.data/` deleted first
+(last run on the final build).
 The script is a headless Chromium session (playwright-core), and every call
 below is the same `fetch` you would type into DevTools. To get an action's id,
 press the real button once and copy the `Next-Action` request header from the
-Network tab:
+Network tab. The id changes with every build: on the final build,
+`cancelAppointment` was `60c7bd4f…` and `checkInAppointment` was `601ab001…`.
 
 ```js
 // in the DevTools console, on any page of the site
 const fd = new FormData();
 fd.append("_1_appointmentId", "HK-4K7QD");      // the action's formData argument
 fd.append("0", '[null,"$K1"]');                 // (previousState, formData)
-await fetch("/", { method: "POST", headers: { "Next-Action": "60ab0399…" }, body: fd })
+await fetch("/", { method: "POST", headers: { "Next-Action": "60c7bd4f…" }, body: fd })
   .then((r) => r.text());
 ```
 

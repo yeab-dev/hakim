@@ -1,0 +1,35 @@
+import { ImageResponse } from "next/og";
+import { getClinicCard, getClinicIds } from "@/lib/data";
+import { OG_SIZE, OgFrame } from "@/lib/og";
+
+// One preview card per clinic: what a link to it looks like when shared in a
+// Telegram group. Name, area, specialties and the consultation fees: the same
+// record the page shows. Built for every clinic at build time.
+export const alt = "A Hakim clinic: name, area, specialties and consultation fees";
+export const size = OG_SIZE;
+export const contentType = "image/png";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getClinicIds().map((clinicId) => ({ clinicId }));
+}
+
+export default async function Image({ params }) {
+  const { clinicId } = await params;
+  const clinic = getClinicCard(clinicId);
+  const fees = clinic.feeFrom === clinic.feeTo ? `${clinic.feeFrom} ETB` : `${clinic.feeFrom}–${clinic.feeTo} ETB`;
+  return new ImageResponse(
+    (
+      <OgFrame
+        eyebrow={`${clinic.areaName.toUpperCase()} · ADDIS ABABA`}
+        title={clinic.name}
+        lines={[
+          clinic.specialties.map((s) => s.name).join(" · "),
+          `${clinic.doctorCount} doctors · consultation ${fees}`,
+        ]}
+        footer={clinic.hours}
+      />
+    ),
+    size,
+  );
+}

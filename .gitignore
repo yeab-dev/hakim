@@ -30,8 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files: anything *.local is one person's own settings and secrets, never
+# committed. .env.example is committed (it documents every variable). A
+# shared .env, .env.development or .env.production would be committed too.
+.env*.local
 
 # vercel
 .vercel
@@ -40,8 +42,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Hakim: the appointment store written at run time (see lib/store.js)
+# Hakim: accounts, sessions and bookings written at run time (see lib/files.js)
 /.data/
-
-# the example env file is documentation, not a secret
-!.env.example

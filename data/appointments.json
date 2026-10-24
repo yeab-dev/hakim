@@ -178,5 +178,101 @@
     "patientName": "Abebe Kebede",
     "phone": "+251911234567",
     "reason": "Cleaning and check-up"
+  },
+  {
+    "id": "HK-3MB7Y",
+    "userId": "usr_meseret",
+    "doctorId": "dr-yonas-girma",
+    "dayOffset": -1,
+    "time": "14:30",
+    "patientName": "Biniam Alemayehu",
+    "phone": "+251944118820",
+    "reason": "Vaccination at nine months",
+    "forSomeoneElse": true,
+    "status": "arrived"
+  },
+  {
+    "id": "HK-5SV2K",
+    "userId": "usr_tsion",
+    "doctorId": "dr-selamawit-haile",
+    "dayOffset": -1,
+    "time": "10:00",
+    "patientName": "Tsion Haile",
+    "phone": "+251922765432",
+    "reason": "Blood pressure follow-up",
+    "forSomeoneElse": false,
+    "status": "arrived"
+  },
+  {
+    "id": "HK-7DF4W",
+    "userId": "usr_meseret",
+    "doctorId": "dr-hanna-tesfaye",
+    "dayOffset": -2,
+    "time": "09:30",
+    "patientName": "Meseret Alemayehu",
+    "phone": "+251944118820",
+    "reason": "Sore throat and fever",
+    "forSomeoneElse": false,
+    "status": "arrived"
+  },
+  {
+    "id": "HK-9QA6H",
+    "userId": "usr_tsion",
+    "doctorId": "dr-yonas-girma",
+    "dayOffset": -3,
+    "time": "15:00",
+    "patientName": "Abel Haile",
+    "phone": "+251922765432",
+    "reason": "Ear infection, follow-up",
+    "forSomeoneElse": true,
+    "status": "cancelled"
+  },
+  {
+    "id": "HK-2LC8N",
+    "userId": "usr_meseret",
+    "doctorId": "dr-selamawit-haile",
+    "dayOffset": -3,
+    "time": "11:00",
+    "patientName": "Meseret Alemayehu",
+    "phone": "+251944118820",
+    "reason": "Thyroid results",
+    "forSomeoneElse": false,
+    "status": "booked"
+  },
+  {
+    "id": "HK-4ZE9R",
+    "userId": "usr_tsion",
+    "doctorId": "dr-hanna-tesfaye",
+    "dayOffset": -4,
+    "time": "08:30",
+    "patientName": "Tsion Haile",
+    "phone": "+251922765432",
+    "reason": "Headaches, \"on and off\", since September",
+    "forSomeoneElse": false,
+    "status": "arrived"
+  },
+  {
+    "id": "HK-6YU3P",
+    "userId": "usr_meseret",
+    "doctorId": "dr-selamawit-haile",
+    "dayOffset": 1,
+    "time": "09:30",
+    "patientName": "Almaz Tadesse",
+    "phone": "+251944118820",
+    "reason": "Knee pain, both knees",
+    "forSomeoneElse": true,
+    "status": "booked"
+  },
+  {
+    "id": "HK-8NR5T",
+    "userId": "usr_tsion",
+    "doctorId": "dr-yonas-girma",
+    "dayOffset": 2,
+    "time": "16:00",
+    "patientName": "Abel Haile",
+    "phone": "+251922765432",
+    "reason": "Cough at night",
+    "forSomeoneElse": true,
+    "status": "booked"
   }
 ]

@@ -459,7 +459,27 @@ Then **95 checks in headless Chromium** (playwright-core), all passing:
 
 **Live URL: https://hakim-five-brown.vercel.app.** Deployed through Vercel's GitHub integration: every push to `main` deploys.
 
-**On Vercel, written data is temporary.** The project folder is read-only there, so bookings, accounts and sessions are written to the instance's `/tmp` (lib/files.js). They last as long as that server instance: a cold start, or a request served by a second instance, starts again from the seed, which can also sign you out. The seed clinics, doctors and demo accounts are always there. A database is the fix (FUTURE.md).
+**Data on Vercel lives in Upstash Redis** (Vercel → Storage), shared by every server instance; `GET /api/health` reports `{"store":"redis"}`. Without it, sessions were per instance: measured, 1 sign-in in 8 survived three page loads. Locally, with no Redis variables, the same code uses `.data/` files (lib/files.js).
+
+### Verified on the live URL (2026-10-24)
+
+Headless Chromium against https://hakim-five-brown.vercel.app:
+
+| Check | Result |
+| --- | --- |
+| Sign in, then three more page loads, ×8 | 8/8 signed in, 8/8 sessions kept |
+| Book a slot end to end | Booked `HK-Q52S2` |
+| Cancel your own booking | 200; the page shows *Cancelled* |
+| Attack 1: `DELETE` signed out | 401 |
+| Attack 2: Abebe cancels Tsion's `HK-2PB6Y` | 403 *You can only cancel your own bookings* |
+| Attack 2b: open Tsion's id in the URL | 404 |
+| Attack 3: `/login?next=https://example.com` | Lands on `/appointments`, same origin |
+| CSV export | `hakim-appointments.csv` downloads |
+| Brand-new account | Signs up; *My appointments* shows the empty state and *Book another visit* |
+| Private window, `/appointments` | Redirected to `/login?next=%2Fappointments` |
+| One `h1` on `/`, `/clinics`, a clinic page, `/login` | 1 each |
+| Canonical, `og:image`, sitemap, robots | Absolute URLs on the live domain |
+| Page errors | None |
 
 Before deployment, no URL had been made up. Day 48 sets up
 Vercel. Until then, the checks the course wants run on a deployment (absolute

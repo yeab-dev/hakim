@@ -30,9 +30,9 @@
 - A Leaflet map on each clinic page, with the address as text beside it (Day 47).
 - Live queue status over server-sent events instead of 10-second polling (Day 47).
 - A full keyboard-only pass by hand, mouse out of reach (Day 48).
-- A real database. The store is a JSON file in `.data/`, which won't persist on
-  a serverless host such as Vercel. This has to happen before a real deployment.
-- Run the full verification battery on the live URL (Days 48–49).
+- A real database with transactions. Upstash Redis stores each collection whole,
+  so two simultaneous writes could lose one.
+- Lighthouse on the live URL, to replace the local numbers in PERF.md.
 
 ## Known issues
 

@@ -13,11 +13,17 @@
   half-built on the branch `wip/day46-dashboard` and kept off `main` so `main`
   stays working.
 
+## Done since the cut
+
+- **CSV export (Day 47).** *Download my booking history* on My appointments,
+  served by `GET /api/appointments/export`, which is scoped to the session (401
+  when signed out). Commas, quotes and newlines are quoted per RFC 4180.
+  `npm run check:csv` tests it.
+
 ## Next
 
 - A Leaflet map on each clinic page, with the address as text beside it (Day 47).
 - Live queue status over server-sent events instead of 10-second polling (Day 47).
-- A CSV export of a patient's booking history (Day 47).
 - A full keyboard-only pass and a 44 px touch-target pass (Day 48).
 - A real database. The store is a JSON file in `.data/`, which won't persist on
   a serverless host such as Vercel. This has to happen before a real deployment.

@@ -34,6 +34,13 @@ export default async function AppointmentsPage({ searchParams }) {
     <>
       <h1>My appointments</h1>
       <p>Signed in as {session.name} ({session.display}).</p>
+      {/* A plain link to a route handler: the browser downloads the file,
+          so this needs no client component. */}
+      <p>
+        <a href="/api/appointments/export" download>
+          Download my booking history (CSV)
+        </a>
+      </p>
 
       <h2>Upcoming</h2>
       {upcoming.length === 0 ? (

@@ -32,7 +32,7 @@
 - A full keyboard-only pass by hand, mouse out of reach (Day 48).
 - A real database. The store is a JSON file in `.data/`, which won't persist on
   a serverless host such as Vercel. This has to happen before a real deployment.
-- Deploy, then run the verification battery on the live URL (Days 48–49).
+- Run the full verification battery on the live URL (Days 48–49).
 
 ## Known issues
 

@@ -11,7 +11,7 @@ performance budget, before and after). Week 8's documents are
 [STRATEGY.md](STRATEGY.md) (rendering per route) and
 [BOUNDARY.md](BOUNDARY.md) (server or client per file).
 
-**Live URL: not deployed yet.** See [Deployment](#deployment).
+**Live URL: https://hakim-five-brown.vercel.app** (Vercel, deployed from `main`). See [Deployment](#deployment).
 
 ## The brief
 
@@ -253,7 +253,7 @@ npm run lint
 
 | Variable | Needed | What it does |
 | --- | --- | --- |
-| `SITE_URL` | In production | The public origin, with no trailing slash, for `metadataBase` (absolute `og:image` and canonical URLs), `sitemap.xml` and `robots.txt`. It is read at build time, so rebuild after changing it. It defaults to the placeholder `https://hakim.example`, because the production URL is pending deployment. |
+| `SITE_URL` | In production | The public origin, with no trailing slash, for `metadataBase` (absolute `og:image` and canonical URLs), `sitemap.xml` and `robots.txt`. It is read at build time, so rebuild after changing it. On Vercel it falls back to the project's production domain (`VERCEL_PROJECT_PRODUCTION_URL`, set by Vercel), so it needs no setup there. Elsewhere it defaults to the placeholder `https://hakim.example`. |
 
 That is the whole list, and [.env.example](.env.example) documents it.
 There is **no secret**: sessions are looked up server-side, so nothing is
@@ -457,7 +457,11 @@ Then **95 checks in headless Chromium** (playwright-core), all passing:
 
 ## Deployment
 
-**Live URL: not deployed yet.** No URL has been made up. Day 48 sets up
+**Live URL: https://hakim-five-brown.vercel.app.** Deployed through Vercel's GitHub integration: every push to `main` deploys.
+
+**On Vercel, written data is temporary.** The project folder is read-only there, so bookings, accounts and sessions are written to the instance's `/tmp` (lib/files.js). They last as long as that server instance: a cold start, or a request served by a second instance, starts again from the seed, which can also sign you out. The seed clinics, doctors and demo accounts are always there. A database is the fix (FUTURE.md).
+
+Before deployment, no URL had been made up. Day 48 sets up
 Vercel. Until then, the checks the course wants run on a deployment (absolute
 preview URLs, real cookies over HTTPS) were made against `next start`, with
 the placeholder origin.
@@ -485,4 +489,4 @@ the browser bundle. Before calling it live:
 - [ ] Run the three attacks from AUTH.md against the deployed URL.
 - [ ] Re-run Lighthouse on the deployment (mobile, throttled) and add it as a
       third column in PERF.md. The numbers there are from `localhost`.
-- [ ] Put the live URL at the top of this README.
+- [x] Put the live URL at the top of this README.

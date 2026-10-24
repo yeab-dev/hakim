@@ -44,3 +44,6 @@ next-env.d.ts
 
 # Hakim: accounts, sessions and bookings written at run time (see lib/files.js)
 /.data/
+
+# Private presentation notes, kept local
+PRESENTATION.md

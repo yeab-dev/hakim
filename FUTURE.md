@@ -20,11 +20,16 @@
   when signed out). Commas, quotes and newlines are quoted per RFC 4180.
   `npm run check:csv` tests it.
 
+- **Touch targets (Day 48).** Every standalone control is at least 44 px,
+  measured at 375 px wide; only links inside a sentence are smaller, which
+  WCAG 2.5.8 allows. There are no clickable divs, and no horizontal scroll on
+  any public page in light or dark mode.
+
 ## Next
 
 - A Leaflet map on each clinic page, with the address as text beside it (Day 47).
 - Live queue status over server-sent events instead of 10-second polling (Day 47).
-- A full keyboard-only pass and a 44 px touch-target pass (Day 48).
+- A full keyboard-only pass by hand, mouse out of reach (Day 48).
 - A real database. The store is a JSON file in `.data/`, which won't persist on
   a serverless host such as Vercel. This has to happen before a real deployment.
 - Deploy, then run the verification battery on the live URL (Days 48–49).

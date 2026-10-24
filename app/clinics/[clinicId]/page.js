@@ -60,7 +60,7 @@ export default async function ClinicPage({ params }) {
       {/* Structured data from the same `clinic` object rendered below. */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serialiseJsonLd(clinicJsonLd(clinic)) }} />
       <p>
-        <Link href="/clinics">&larr; All clinics</Link>
+        <Link className="back-link" href="/clinics">&larr; All clinics</Link>
       </p>
       <h1>{clinic.name}</h1>
       <dl className="facts">

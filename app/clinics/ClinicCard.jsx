@@ -6,7 +6,7 @@ function ClinicCard({ clinic }) {
   return (
     <article className="card">
       <h2 className="card__title">
-        <Link href={`/clinics/${clinic.id}`}>{clinic.name}</Link>
+        <Link className="card-title-link" href={`/clinics/${clinic.id}`}>{clinic.name}</Link>
       </h2>
       <p className="card__meta">
         {clinic.areaName} · {clinic.address}

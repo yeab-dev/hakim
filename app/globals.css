@@ -770,3 +770,20 @@ textarea {
   gap: 12px 20px;
   margin: -8px 0 24px;
 }
+
+/* Day 48: touch targets of at least 44 px, measured at 375 px wide. Links
+   inside a sentence are exempt (WCAG 2.5.8 "inline"); everything that stands
+   on its own as a control is not. */
+.brand,
+.nav__link,
+.chip,
+.back-link,
+.card-title-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-title-link {
+  min-width: 44px;
+}

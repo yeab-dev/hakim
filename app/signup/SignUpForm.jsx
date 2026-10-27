@@ -6,8 +6,6 @@ import { signUp } from "@/app/actions";
 import Field from "@/components/Field";
 import { PASSWORD_HINT, PHONE_HINT, SIGN_UP_FIELDS, validateSignUp } from "@/lib/schema";
 
-// Sign-up: name, number, password, checked with the same validateSignUp() the
-// action runs. The action alone decides whether the number is free.
 function SignUpForm({ next }) {
   const [state, formAction, pending] = useActionState(signUp, null);
   const [values, setValues] = useState(() => ({

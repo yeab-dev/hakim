@@ -15,7 +15,6 @@ export const metadata = {
   robots: { index: false, follow: true },
 };
 
-// Dynamic (ƒ), for the same reasons as /login: ?next= and the session cookie.
 export default async function SignUpPage({ searchParams }) {
   const { next } = await searchParams;
   const returnTo = safeReturnPath(next);

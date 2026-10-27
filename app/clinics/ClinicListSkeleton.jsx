@@ -1,4 +1,3 @@
-// What the list looks like while it loads: the same shapes, no content.
 function ClinicListSkeleton() {
   return (
     <div role="status" aria-live="polite">

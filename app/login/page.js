@@ -11,18 +11,13 @@ export const metadata = {
   title: "Sign in",
   description: DESCRIPTION,
   openGraph: openGraph({ title: "Sign in · Hakim", description: DESCRIPTION, path: "/login" }),
-  // ?next= varies; the page does not.
   alternates: { canonical: "/login" },
   robots: { index: false, follow: true },
 };
 
-// Dynamic (ƒ): it reads ?next= (where to return) and the session cookie (to
-// say "already signed in" instead of showing the form).
 export default async function LoginPage({ searchParams }) {
   const { next } = await searchParams;
   const session = await getSession();
-  // ?next= is user input. Anything that is not a path on this site is dropped
-  // here, and checked again inside the signIn action.
   const returnTo = safeReturnPath(next, session?.role === "reception" ? "/reception" : "/appointments");
   const signUpHref = next ? `/signup?next=${encodeURIComponent(returnTo)}` : "/signup";
 

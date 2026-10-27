@@ -6,12 +6,6 @@ import { bookAppointment } from "@/app/actions";
 import Field from "@/components/Field";
 import { BOOKING_FIELDS, PHONE_HINT, REASON_MAX, validateBooking } from "@/lib/schema";
 
-// The booking form — the only client component on the page. It owns the
-// field values and which fields have been touched; the server action owns
-// what happens next. Both use validateBooking() from lib/schema.js.
-//
-// It works without JavaScript too: the form posts to the action, and the page
-// comes back with the action's errors and the values typed so far.
 function BookingForm({ slotId, defaultPhone }) {
   const [state, formAction, pending] = useActionState(bookAppointment, null);
   const [values, setValues] = useState(() => ({
@@ -33,10 +27,6 @@ function BookingForm({ slotId, defaultPhone }) {
     };
   }
 
-  // Leaving a field checks it — but only once something is typed in it.
-  // Tabbing past an empty field is not a mistake yet, and an error appearing
-  // under it would push the Book button away from the pointer mid-click.
-  // Empty fields are caught on submit instead.
   function touch(field) {
     return (event) => {
       if (event.target.value.trim()) setTouched((t) => ({ ...t, [field]: true }));

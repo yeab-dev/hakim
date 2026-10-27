@@ -1,13 +1,5 @@
 import PropTypes from "prop-types";
 
-// Label, control and message, wired together — Day 33's Field, unchanged in
-// spirit:
-//   htmlFor + id      the label belongs to this control
-//   aria-invalid      the control is currently wrong
-//   aria-describedby  the hint and the message are read out with the control
-//   role="alert"      the message is announced the moment it appears
-// `as` picks the element: "input", "select" or "textarea". Everything else is
-// passed straight through. No hooks, so it runs wherever its parent does.
 function Field({ as: Control = "input", name, label, hint, error, children, ...rest }) {
   const hintId = hint ? `${name}-hint` : undefined;
   const errorId = error ? `${name}-error` : undefined;

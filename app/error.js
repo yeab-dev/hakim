@@ -3,8 +3,6 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-// The fallback for a throw anywhere without a closer error.js (the clinics
-// segment has its own). The layout above it — header and nav — stays up.
 export default function RootError({ error, reset }) {
   return (
     <div className="state state--error" role="alert">

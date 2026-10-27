@@ -2,14 +2,6 @@ import Form from "next/form";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-// The two filters, as a GET form. Submitting it *is* changing the URL —
-// /clinics?specialty=dentistry&area=bole — so a search can be shared and the
-// back button works. next/form turns the submission into a client-side
-// navigation when JavaScript is there, and a plain page load when it is not.
-//
-// A server component: it holds no state (the URL does), so it ships no code
-// of its own. The `key` remounts the selects when the URL changes under them
-// (back/forward), so they always show what the list is showing.
 function FilterBar({ specialties, areas, specialty, area }) {
   return (
     <Form action="/clinics" className="filters" key={`${specialty}|${area}`} aria-label="Filter clinics">

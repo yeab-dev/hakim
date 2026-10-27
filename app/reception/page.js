@@ -12,11 +12,6 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-// Staff only, rendered per request. Three things are checked here, on the
-// server, before anything is read: a session (requireRole → requireSession),
-// the reception role, and — through the query — which clinic: the list is
-// read with session.clinicId, so no URL or form value can show another
-// clinic's patients. The check-in action checks all of it again.
 export const dynamic = "force-dynamic";
 
 export default async function ReceptionPage() {

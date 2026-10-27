@@ -11,8 +11,6 @@ export const metadata = {
   description: "One booking on Hakim: its reference, doctor, clinic and time, and whether reception has checked you in.",
 };
 
-// Dynamic (ƒ): one booking, shown only to its owner. Somebody else's
-// reference gets the same not-found screen as a reference that does not exist.
 export default async function AppointmentPage({ params, searchParams }) {
   const { appointmentId } = await params;
   const { booked } = await searchParams;
@@ -22,7 +20,6 @@ export default async function AppointmentPage({ params, searchParams }) {
 
   const rows = [
     ["Reference", <span key="ref" className="reference">{appointment.id}</span>],
-    // The one live row: a client component seeded with this same record.
     ["Status", <LiveStatus key="status" initial={appointment} />],
     ["Doctor", appointment.doctorName],
     ["Clinic", `${appointment.clinicName}, ${appointment.areaName}`],

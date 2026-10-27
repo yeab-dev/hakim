@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 
-// Doctor, clinic, date and time, as a definition list. Server markup only;
-// shared by the booking page and the appointment page.
 function SlotSummary({ rows }) {
   return (
     <div className="summary">

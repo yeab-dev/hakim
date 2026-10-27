@@ -5,26 +5,12 @@ import { NOT_SIGNED_IN, problem } from "@/lib/http";
 import { parseBooking } from "@/lib/schema";
 import { getSession } from "@/lib/session";
 
-// GET /api/appointments
-//   200 { upcoming: [...], earlier: [...] }   the signed-in user's own
-//   401 not signed in
 export async function GET() {
   const session = await getSession();
   if (!session) return NOT_SIGNED_IN();
   return Response.json(await appointmentsFor(session.userId), { headers: { "Cache-Control": "private, no-store" } });
 }
 
-// POST /api/appointments
-//   body { slotId, patientName, phone, reason, forSomeoneElse? }
-//   201 { appointment }            Location: /appointments/:id
-//   400 the body is not JSON
-//   401 not signed in
-//   404 the slot does not exist (or has passed)
-//   409 the slot is already booked
-//   422 { error, fieldErrors }     the values failed lib/schema.js
-//
-// The same rules and the same bookSlot() as the bookAppointment server action
-// — the form's own checks are a courtesy; these are the rule.
 export async function POST(request) {
   const session = await getSession();
   if (!session) return NOT_SIGNED_IN();

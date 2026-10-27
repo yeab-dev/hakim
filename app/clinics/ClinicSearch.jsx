@@ -6,18 +6,8 @@ import useSWR from "swr";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { fetcher } from "@/lib/fetcher";
 
-const MIN = 2; // the same SEARCH_MIN as lib/data.js — shorter matches nearly everything
+const MIN = 2;
 
-// Search clinics and doctors by name as you type. The one query here that
-// cannot run on the server: it is triggered by typing.
-//
-// - Debounced 300 ms: one request per pause, not one per keystroke.
-// - A null key while the term is shorter than two characters: no request at
-//   all for an empty box.
-// - keepPreviousData: the old results stay (dimmed) while the next ones load,
-//   so the list never flashes empty between "han" and "hann".
-// - SWR guarantees the results shown belong to the current key, so a slow
-//   answer for "ha" can never overwrite the answer for "hanna".
 export default function ClinicSearch() {
   const [term, setTerm] = useState("");
   const debounced = useDebouncedValue(term.trim(), 300);
@@ -25,7 +15,7 @@ export default function ClinicSearch() {
 
   const { data, error, isLoading, isValidating } = useSWR(key, fetcher, {
     keepPreviousData: true,
-    revalidateOnFocus: false, // names change with a deploy, not while you look
+    revalidateOnFocus: false,
   });
 
   const showing = key && data;

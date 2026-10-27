@@ -9,14 +9,6 @@ export const metadata = {
   alternates: { canonical: "/appointments" },
 };
 
-// Dynamic (ƒ): one person's bookings, read with their cookie. The Vite
-// version fetched these in an effect; this async server component reads them
-// directly — no useFetch, no loading flag, no endpoint in between.
-//
-// "Past and cancelled" grows with every visit, so it is paged — and the page
-// number lives in the query string (?page=2), so a page can be linked to,
-// survives a refresh and works without JavaScript. Upcoming bookings are
-// never paged: there are only ever a few, and they matter most.
 const PAGE_SIZE = 5;
 
 export default async function AppointmentsPage({ searchParams }) {
@@ -25,7 +17,6 @@ export default async function AppointmentsPage({ searchParams }) {
   const { upcoming, earlier } = await appointmentsFor(session.userId);
 
   const pages = Math.max(1, Math.ceil(earlier.length / PAGE_SIZE));
-  // ?page= is user input: anything that is not a page we have shows page 1.
   const asked = Number.parseInt(pageParam, 10);
   const page = Number.isInteger(asked) && asked >= 1 && asked <= pages ? asked : 1;
   const shown = earlier.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -34,8 +25,6 @@ export default async function AppointmentsPage({ searchParams }) {
     <>
       <h1>My appointments</h1>
       <p>Signed in as {session.name} ({session.display}).</p>
-      {/* A plain link to a route handler: the browser downloads the file,
-          so this needs no client component. */}
       <p>
         <a href="/api/appointments/export" download>
           Download my booking history (CSV)

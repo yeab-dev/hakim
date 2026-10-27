@@ -8,9 +8,6 @@ import FilterBar from "./FilterBar";
 
 const nameOf = (list, id) => list.find((x) => x.id === id)?.name;
 
-// The filters only known ids, in one order. The page and its metadata both
-// use this, so the canonical URL, title and description describe exactly the
-// list on screen. Unknown values, ?fail= and ?slow= are left out.
 async function readFilters(searchParams) {
   const query = await searchParams;
   return {
@@ -20,8 +17,6 @@ async function readFilters(searchParams) {
   };
 }
 
-// "Dentistry clinics" + "in Kazanchis": the h1, the title and the
-// description are all built from this, so they always agree with the list.
 function describe(specialty, area) {
   const specialtyName = nameOf(getSpecialties(), specialty);
   const areaName = nameOf(getAreas(), area);
@@ -32,10 +27,6 @@ function describe(specialty, area) {
   };
 }
 
-// A filtered list is a page someone shares ("dentists in Kazanchis"), so it
-// keeps its filters in the canonical URL; everything else in the query string
-// (an unknown filter, ?fail=1, ?ref=telegram) is not part of the page and is
-// dropped from it. /clinics?specialty=dentistry&ref=x → /clinics?specialty=dentistry.
 export async function generateMetadata({ searchParams }) {
   const { specialty, area } = await readFilters(searchParams);
   const params = new URLSearchParams();
@@ -57,14 +48,10 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-// Dynamic (ƒ): the page reads `searchParams` — the filters are part of the
-// request — and the "soonest open slot" on every card changes with each
-// booking and with the clock.
 export default async function ClinicsPage({ searchParams }) {
-  // Query values are user input: only known ids get through.
   const { query, specialty, area } = await readFilters(searchParams);
   const fail = query.fail === "1";
-  const slow = query.slow === "1"; // demo switch: shows the skeleton for 700 ms
+  const slow = query.slow === "1";
   const ignored = (query.specialty && !specialty) || (query.area && !area);
   const { what, where } = describe(specialty, area);
 
@@ -77,8 +64,6 @@ export default async function ClinicsPage({ searchParams }) {
       <FilterBar specialties={getSpecialties()} areas={getAreas()} specialty={specialty} area={area} />
       {ignored && <p className="note">An unknown filter in the address was ignored.</p>}
 
-      {/* The filter bar is sent at once; only the list waits. The key makes a
-          new search show the skeleton again instead of the old results. */}
       <Suspense key={`${specialty}|${area}|${fail}|${slow}`} fallback={<ClinicListSkeleton />}>
         <ClinicList specialty={specialty} area={area} fail={fail} slow={slow} />
       </Suspense>

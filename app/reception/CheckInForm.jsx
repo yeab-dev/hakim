@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { useActionState } from "react";
 import { checkInAppointment } from "@/app/actions";
 
-// One "Checked in" button per waiting patient. The role and clinic checks are
-// inside checkInAppointment on the server — this only shows pending and the
-// action's answer.
 function CheckInForm({ appointmentId, patientName }) {
   const [state, formAction, pending] = useActionState(checkInAppointment, null);
   return (

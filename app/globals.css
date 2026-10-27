@@ -1,6 +1,3 @@
-/* Hakim — one stylesheet. Day 35's index.css and Layout.css, merged, plus the
-   screens that were placeholders then. Light and dark follow the system. */
-
 :root {
   --text: #4b5563;
   --text-h: #0f172a;
@@ -102,8 +99,6 @@ ul {
   white-space: nowrap;
 }
 
-/* ---- shell ---------------------------------------------------------- */
-
 .shell {
   min-height: 100vh;
   display: flex;
@@ -158,8 +153,6 @@ ul {
   cursor: pointer;
 }
 
-/* Reserved for the sign-in state, which arrives after the page: as wide as
-   "Sign out 0911 234 567", so nothing moves when it does. */
 .nav__auth {
   display: inline-flex;
   justify-content: flex-start;
@@ -195,8 +188,6 @@ ul {
   margin: -12px 0 24px;
   font-size: 15px;
 }
-
-/* ---- building blocks ------------------------------------------------ */
 
 .button {
   display: inline-block;
@@ -344,8 +335,6 @@ ul {
   background: none;
 }
 
-/* ---- clinics -------------------------------------------------------- */
-
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -457,9 +446,6 @@ textarea {
 }
 
 .doctor {
-  /* A grid item's minimum width is its content's; without this the row of
-     day buttons would widen the card past a phone screen instead of
-     scrolling inside it. */
   min-width: 0;
   padding: 16px;
   border: 1px solid var(--border);
@@ -545,8 +531,6 @@ textarea {
   font-size: 15px;
 }
 
-/* ---- forms ---------------------------------------------------------- */
-
 .form {
   display: grid;
   gap: 16px;
@@ -617,8 +601,6 @@ textarea {
 .summary dd {
   margin: 0;
 }
-
-/* ---- appointments --------------------------------------------------- */
 
 .appointments {
   display: grid;
@@ -703,8 +685,6 @@ textarea {
   display: contents;
 }
 
-/* ---- live status (appointment page) --------------------------------- */
-
 .live {
   display: flex;
   flex-wrap: wrap;
@@ -715,8 +695,6 @@ textarea {
 .live__hint {
   font-size: 13px;
 }
-
-/* ---- search (clinics page) ------------------------------------------ */
 
 .search {
   margin-bottom: 20px;
@@ -771,9 +749,6 @@ textarea {
   margin: -8px 0 24px;
 }
 
-/* Day 48: touch targets of at least 44 px, measured at 375 px wide. Links
-   inside a sentence are exempt (WCAG 2.5.8 "inline"); everything that stands
-   on its own as a control is not. */
 .brand,
 .nav__link,
 .chip,

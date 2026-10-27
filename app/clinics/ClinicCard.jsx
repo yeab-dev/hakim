@@ -1,7 +1,6 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-// Pure markup from data — a server component, no JavaScript shipped.
 function ClinicCard({ clinic }) {
   return (
     <article className="card">

@@ -5,14 +5,6 @@ import { useActionState, useEffect, useState } from "react";
 import { cancelAppointment } from "@/app/actions";
 import { useAppointment } from "./useAppointment";
 
-// The cancel button, with a "are you sure?" step. A client component for that
-// one piece of state and the pending flag. The permission check is not here —
-// it is inside cancelAppointment, on the server.
-//
-// It reads the same SWR key as LiveStatus (one request serves both), so the
-// button disappears by itself if reception checks the patient in while the
-// page is open — and after a cancel it refreshes that key at once rather
-// than waiting for the next poll.
 function CancelForm({ initial }) {
   const [state, formAction, pending] = useActionState(cancelAppointment, null);
   const [confirming, setConfirming] = useState(false);
@@ -45,7 +37,6 @@ function CancelForm({ initial }) {
         </p>
       ) : (
         <p>
-          {/* Without JavaScript this submits straight away; with it, it asks first. */}
           <button
             type="submit"
             className="button button--danger"

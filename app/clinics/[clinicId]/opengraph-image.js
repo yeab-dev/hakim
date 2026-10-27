@@ -3,9 +3,6 @@ import { getClinicCard, getClinicIds } from "@/lib/data";
 import { etbRange } from "@/lib/format";
 import { OG_SIZE, OgFrame } from "@/lib/og";
 
-// One preview card per clinic: what a link to it looks like when shared in a
-// Telegram group. Name, area, specialties and the consultation fees: the same
-// record the page shows. Built for every clinic at build time.
 export const alt = "A Hakim clinic: name, area, specialties and consultation fees";
 export const size = OG_SIZE;
 export const contentType = "image/png";

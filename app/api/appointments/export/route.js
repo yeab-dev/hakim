@@ -3,12 +3,6 @@ import { toCsv } from "@/lib/csv";
 import { NOT_SIGNED_IN } from "@/lib/http";
 import { getSession } from "@/lib/session";
 
-// GET /api/appointments/export
-//   200 text/csv   the signed-in user's own booking history, as a download
-//   401 not signed in
-//
-// Scoped to session.userId like every other query: there is no id in the
-// request to tamper with.
 const COLUMNS = [
   { header: "Reference", value: (a) => a.id },
   { header: "Date", value: (a) => a.date },

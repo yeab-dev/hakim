@@ -3,9 +3,6 @@
 import PropTypes from "prop-types";
 import { useAppointment } from "./useAppointment";
 
-// The status row of the appointment page, kept current by polling (see
-// useAppointment). Server-rendered first with the page's own data, so it is
-// complete before any JavaScript runs.
 function LiveStatus({ initial }) {
   const { data, error } = useAppointment(initial);
   const a = data.appointment;
@@ -21,7 +18,6 @@ function LiveStatus({ initial }) {
   return (
     <span className="live">
       <span className={`status status--${a.status}`}>{a.statusLabel}</span>
-      {/* role=status: a screen reader hears the change when reception checks you in. */}
       <span role="status" className="live__text">
         {a.status === "arrived" && "Reception has checked you in."}
         {queue}

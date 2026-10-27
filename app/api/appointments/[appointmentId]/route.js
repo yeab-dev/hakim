@@ -4,8 +4,6 @@ import { NOT_SIGNED_IN, problem } from "@/lib/http";
 import { getSession } from "@/lib/session";
 import { markCancelled } from "@/lib/store";
 
-// GET /api/appointments/:id
-//   200 { appointment }  401 not signed in  404 no such booking *of yours*
 export async function GET(_request, { params }) {
   const { appointmentId } = await params;
   const session = await getSession();
@@ -15,15 +13,6 @@ export async function GET(_request, { params }) {
   return Response.json({ appointment }, { headers: { "Cache-Control": "private, no-store" } });
 }
 
-// DELETE /api/appointments/:id — cancel it
-//   200 { appointment }  cancelled (or already was)
-//   401 not signed in
-//   403 signed in, but the booking is somebody else's
-//   404 no such booking
-//   409 it has already started, or the patient has checked in
-//
-// The id in the URL is only a claim. Who is asking comes from the cookie, and
-// the booking must belong to them — checked here, in the handler itself.
 export async function DELETE(_request, { params }) {
   const { appointmentId } = await params;
   const session = await getSession();
